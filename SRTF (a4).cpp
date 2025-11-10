@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <climits>
 
-int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5], RT[5];
+int ST[7], AT[7], TAT[7], CT[7], WT[7], BT[7], RT[7];  //  processes 1-6
 
 void processtime(int AT[], int BT[]) {
     int complete = 0,  i;
     for (i = 1; i < 7; i++) {
         RT[i] = BT[i];
     }
-int s;
+int s;   //index of the shortest process
 int min;
 int time = 0;
     while (complete < 6) {
@@ -16,22 +16,19 @@ int time = 0;
         min = INT_MAX;
 
         for (i = 1; i < 7; i++) {
-            if (AT[i] <= time && RT[i] > 0 && RT[i] < min) {
+            if (AT[i] <= time && RT[i] > 0 && RT[i] < min) {      //if the process has arrived && process has some RT  &&  RT is the minimum 
                 min = RT[i];
                 s = i;
             }
         }
-
-
-	
        			 if (RT[s] == BT[s]) {
-           			 ST[s] = time;
+           			 ST[s] = time;     //record start time 
        						 }
 
-       		 RT[s]--;
+       		 RT[s]--;   //decrement its rt since it executed
        		 time++;
 
-      if (RT[s] == 0) {
+      if (RT[s] == 0) {   //calculate rest, process has finished
           CT[s] = time;
           TAT[s] = CT[s] - AT[s];
           WT[s] = TAT[s] - BT[s];
@@ -56,8 +53,8 @@ int main() {
         avg_tat += TAT[i];
     }
 
-    avg_wt = avg_wt / 4;
-    avg_tat = avg_tat / 4;
+    avg_wt = avg_wt / 6;
+    avg_tat = avg_tat / 6;
 
     printf("Process   AT  BT  ST  CT  TAT  WT\n");
     for (int i = 1; i <= 6; i++) {
