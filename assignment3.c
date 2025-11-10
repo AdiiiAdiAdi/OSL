@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5];
+int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5];     #start, arrival, turn around, completion, wait, burst
 
 
 void processtime(int ST[], int BT[]) {
    
     ST[0] = AT[0]; 
     CT[0] = ST[0] + BT[0]; 
-    TAT[0] = CT[0] - AT[0]; 
+    TAT[0] = CT[0] - AT[0];      # tat is the total time taken including wait time in queue
     WT[0] = TAT[0] - BT[0];
 
 
