@@ -1,12 +1,12 @@
 #include <stdio.h>
-// for 5 processes
+
 int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5];     //start, arrival, turn around, completion, wait, burst
 // tat is the total time taken including wait time in queue               //        <--WT--> <--BT-->
                                                                           //        AT      ST      CT
                                                                           //        <-----TAT------->
 
    
-void processtime(int ST[], int BT[]) {
+void processtime() {
    
     ST[0] = AT[0];   //for first process its start is when it arrived            
     CT[0] = ST[0] + BT[0]; 
@@ -15,7 +15,7 @@ void processtime(int ST[], int BT[]) {
 
 
     for (int i = 1; i < 5; i++) {
-        ST[i] = CT[i - 1]; 
+        ST[i] = CT[i - 1];        //completion time of previous process
         CT[i] = ST[i] + BT[i]; 
         TAT[i] = CT[i] - AT[i]; 
         WT[i] = TAT[i] - BT[i]; 
@@ -24,7 +24,7 @@ void processtime(int ST[], int BT[]) {
 
 int main() {
     
-    for (int i = 1; i < 5; i++) {
+    for (int i = 0; i < 4; i++) {         // for 4 processes
         printf("What is process %d's arrival time? ", i );
         scanf("%d", &AT[i]);
 
@@ -33,10 +33,10 @@ int main() {
     }
 
     // Calculate times
-    processtime(ST, BT);
+    processtime();
     
-    int avg_wt;
-    int avg_tnt;
+    int avg_wt=0;
+    int avg_tnt=0;
     
     for (int p=0; p<4; p++){
    avg_wt += WT[p];
