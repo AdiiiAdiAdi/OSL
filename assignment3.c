@@ -48,7 +48,7 @@ int main() {
 
     // Print the results
   printf("Process   Arrival Time Burst Time Start Time  Completion Time  Turnaround Time  Waiting Time\n");
-    for (int i = 1; i < 5; i++) {
+    for (int i = 0; i < 4; i++) {
         printf("%d\t\t %d\t\t  %d\t  %d\t\t  %d\t\t %d\t\t  %d\n",  i , AT[i], BT[i], ST[i], CT[i], TAT[i], WT[i]);
     }
     
