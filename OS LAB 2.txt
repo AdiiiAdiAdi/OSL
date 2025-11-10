@@ -1,3 +1,6 @@
+THIS IS ONLY TO UNDERSTAND --- THIS FILE DOES NOT HAVE CODE FOR ASSIGNEMNT 2
+
+
 computer@computerVY:~$ cat /etc/shells
 # /etc/shells: valid login shells
 /bin/sh
