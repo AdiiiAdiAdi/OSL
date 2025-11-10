@@ -1,13 +1,19 @@
 #include <stdio.h>
-
+// for 5 processes
 int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5];     //start, arrival, turn around, completion, wait, burst
+// tat is the total time taken including wait time in queue               //        <--WT--> <--BT-->
+                                                                          //        AT      ST      CT
+                                                                          //        <-----TAT------->
+
+   
+
 
 
 void processtime(int ST[], int BT[]) {
    
-    ST[0] = AT[0]; 
+    ST[0] = AT[0];   //for first process its start is when it arrived            
     CT[0] = ST[0] + BT[0]; 
-    TAT[0] = CT[0] - AT[0];      // tat is the total time taken including wait time in queue
+    TAT[0] = CT[0] - AT[0];      
     WT[0] = TAT[0] - BT[0];
 
 
