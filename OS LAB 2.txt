@@ -1,0 +1,173 @@
+computer@computerVY:~$ cat /etc/shells
+# /etc/shells: valid login shells
+/bin/sh
+/usr/bin/sh
+/bin/bash
+/usr/bin/bash
+/bin/rbash
+/usr/bin/rbash
+/usr/bin/dash
+/usr/bin/screen
+
+computer@computerVY:~$ echo $SHELL
+/bin/bash
+
+note: to use a value of a variable use $ in front of it
+echo = print
+
+
+computer@computerVY:~$ gedit hello   - open a new file on gedit called hello 
+
+{  (inside gedit)
+
+#bin/bash
+echo "hello world" }
+
+
+computer@computerVY:~$ ./hello   - run file   (or   bash hello, sh hello)
+bash: ./hello: Permission denied
+
+computer@computerVY:~$ chmod +x hello   (x= permission to write file) 
+computer@computerVY:~$ ./hello
+hello world
+
+assign values directly 
+example
+$ to use it
+
+
+computer@computerVY:~$ vehicle=train
+computer@computerVY:~$ n=10
+computer@computerVY:~$ echo $n
+10
+computer@computerVY:~$ echo $vehicle
+train
+
+if you want to assign a value from a variable to echo use double quotes. single quotes will not print the variable
+
+
+computer@computerVY:~$ echo "the value of n is $n"
+the value of n is 10
+computer@computerVY:~$ echo "you should travel by $vehicle"
+you should travel by train
+computer@computerVY:~$ echo 'the value of n is $n'    -single quotes
+the value of n is $n
+
+read= scanf
+
+
+computer@computerVY:~$ read fname
+aditya
+computer@computerVY:~$ echo "my name is $fname"
+my name is aditya
+computer@computerVY:~$ read lname
+muddana
+computer@computerVY:~$ echo "your full name is $fname $lname"
+your full name is aditya muddana
+
+
+if conditions:			numeric:   string
+        greater than            -gt	   
+	greater than or equal	-ge
+	less than	        -lt
+	less than or equal      -le
+	equal	                -eq	   =
+	not equal 		-ne	   !=
+	str1 is less than st2 		   str1 < str2
+	string length greater than 0 	   -n str
+	string length is 0 		   -z str
+
+
+(inside gedit)
+
+#!/bin/bash
+read choice 
+if [ $choice -gt 0 ] 
+then
+echo "choice number is positive"
+fi
+
+
+(in terminal)
+
+computer@computerVY:~$ ./hello
+2
+choice number is positive
+
+
+FOR LOOP:
+
+(inside gedit)
+
+#!/bin/bash
+
+for i in 1 2 3 4 5 
+do
+	echo "welcome guest $i"
+done
+
+(terminal)
+computer@computerVY:~$ chmod +x hello2
+computer@computerVY:~$ ./hello2
+welcome guest 1
+welcome guest 2
+welcome guest 3
+welcome guest 4
+welcome guest 5
+
+
+WHILE LOOP: (gedit)
+
+
+#!/bin/bash
+
+i=1
+n=1
+
+while [ $i -le 10 ]
+do
+    echo "$n * $i = $(expr $i \* $n)"
+    i=$(expr $i + 1)
+done
+
+
+SWITCH CASE (gedit)
+
+#!/bin/bash
+ read var
+ case $var in
+ 1) echo "one";;
+ 2) echo "two";;
+ 3) echo "three";;
+ 4) echo "four";;
+ *) echo "Default- Its bigger than four";;
+ esac
+ 
+ 
+ CONVERSION OF STRING FROM UPPER TO LOWER CASE
+ 
+ computer@computerVY:~$ var1=MYNAMEISADITYA
+ computer@computerVY:~$ echo $var1 | tr ' [A-Z] ' ' [a-z] '
+mynameisaditya
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

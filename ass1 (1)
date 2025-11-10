@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo "value 1:" 
+read a
+echo "value 2:"
+read b
+statement=" Select the operation you want to perform.  1. Addition 2. Subtraction  3. Multiplication 4. Division"
+echo $statement
+
+read choice
+
+case $choice in
+1)
+  add=$((a + b))
+  echo "your result is: $add"
+  ;;
+
+2)
+  sub=$((a-b))
+  echo "your result is: $sub"
+  ;;
+  
+3) 
+  mul=$((a*b))
+  echo "your result is: $mul"
+  ;;
+  
+4)
+  if [ $b -eq 0 ]
+  then
+    echo "value 2 cannot be 0"
+  else
+    div=$((a / b))
+    echo "your result is $div"
+  fi
+  ;;
+
+
+*)echo "choose again"
+
+;;
+esac
+

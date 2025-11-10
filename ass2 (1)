@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+mkdir -p ~/aditya/dir1
+
+
+cat > ~/aditya/hello1.txt
+echo > "HII MY NAME IS ADITYA MUDDANA" ~/aditya/hello1.txt
+
+
+cp ~/aditya/hello1.txt ~/aditya/hello2.txt
+
+
+mv ~/aditya/hello2.txt ~/aditya/change.txt
+
+
+gedit ~/aditya/change.txt 
+
+
+chmod u+rwx ~/aditya/change.txt
+chmod o+r ~/aditya/change.txt
+chmod g+r ~/aditya/change.txt
+
+
+ls -l ~/aditya
+
