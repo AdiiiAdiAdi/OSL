@@ -6,9 +6,6 @@ int ST[5], AT[5], TAT[5], CT[5], WT[5], BT[5];     //start, arrival, turn around
                                                                           //        <-----TAT------->
 
    
-
-
-
 void processtime(int ST[], int BT[]) {
    
     ST[0] = AT[0];   //for first process its start is when it arrived            
