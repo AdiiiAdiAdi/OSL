@@ -28,7 +28,7 @@ pipe (filedes);  //creates two file des values(these are the pipes). filedes[0] 
 			{
 			close(filedes[1]);           //close write
 			read(filedes[0],msg,sizeof(msg));    //3 parameters. (read,variable,size), child process, unistd header. read should be closed during this+//
-			printf("child is reading the data");
+			printf("Child is reading the data from the pipe\n");
 			printf("Child read: %s\n", msg);
 			close(filedes[0]);
 			}
@@ -37,6 +37,7 @@ pipe (filedes);  //creates two file des values(these are the pipes). filedes[0] 
 		{
 		close(filedes[0]);
 		write(filedes[1],msg,sizeof(msg));    //3 parameters. (write,variable,size), parent process, unistd header. read should be closed during this+//
+		printf("Parent is writing the data into the pipe\n");
 		close(filedes[1]);
 						wait(NULL);
 		}
