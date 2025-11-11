@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+int search(int key, int frame[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (frame[i] == key)
+            return i; // found → return index
+    }
+    return -1; // not found
+}
+
+int main() {
+    int pages[50], frames[10];
+    int n, capacity;
+    int pageFaults = 0;
+    int time[10];     // tracks when each page was last used
+    int counter = 0;  // like a "clock" that increases on each access
+
+    printf("Enter number of pages: ");
+    scanf("%d", &n);
+
+    printf("Enter page reference string: ");
+    for (int i = 0; i < n; i++)
+        scanf("%d", &pages[i]);
+
+    printf("Enter frame capacity: ");
+    scanf("%d", &capacity);
+
+    // Initialize all frames as empty
+    for (int i = 0; i < capacity; i++) {
+        frames[i] = -1;
+        time[i] = 0;
+    }
+
+    printf("\nLRU Page Replacement Process:\n");
+
+    for (int i = 0; i < n; i++) {
+        int current_page = pages[i];
+        int pos = search(current_page, frames, capacity);
+
+        if (pos == -1) { // page not found → page fault
+            pageFaults++;
+            int replace = -1, minTime = 99999;
+
+            // find empty slot or least recently used
+            for (int j = 0; j < capacity; j++) {
+                if (frames[j] == -1) { // empty frame found
+                    replace = j;
+                    break;
+                }
+                if (time[j] < minTime) { // find least recently used
+                    minTime = time[j];
+                    replace = j;
+                }
+            }
+
+            frames[replace] = current_page;
+            time[replace] = ++counter;
+
+            // Print frame contents
+            printf("Page %d -> ", current_page);
+            for (int k = 0; k < capacity; k++) {
+                if (frames[k] != -1)
+                    printf("%d ", frames[k]);
+                else
+                    printf("- ");
+            }
+            printf("\n");
+        } else { // page found → update usage time
+            time[pos] = ++counter;
+            printf("Page %d -> No page fault\n", current_page);
+        }
+    }
+
+    printf("\nTotal Page Faults = %d\n", pageFaults);
+    return 0;
+}
