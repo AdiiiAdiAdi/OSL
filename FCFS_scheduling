@@ -13,13 +13,18 @@ void processtime() {
     WT[0] = TAT[0] - BT[0];
 
    
-    for (int i = 1; i < 4; i++) {
-        ST[i] = CT[i - 1];        // next process starts when previous finishes
-        CT[i] = ST[i] + BT[i]; 
-        TAT[i] = CT[i] - AT[i]; 
-        WT[i] = TAT[i] - BT[i]; 
-    }
+for (int i = 1; i < 4; i++) {
+    // ✅ handle case where next process arrives after previous finishes
+    if (CT[i - 1] < AT[i])
+        ST[i] = AT[i];      // CPU idle until process i arrives
+    else
+        ST[i] = CT[i - 1];  // start immediately after previous
+
+    CT[i] = ST[i] + BT[i]; 
+    TAT[i] = CT[i] - AT[i]; 
+    WT[i] = TAT[i] - BT[i]; 
 }
+
 
 int main() {
     
